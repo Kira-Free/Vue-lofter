@@ -158,9 +158,10 @@ export default {
     }
   }
   .hobby{
-    margin-top:1%;
-    margin-bottom:2%;
+    margin-top:3%;
+    margin-bottom:4%;
     display:flex;
+    font-size: 14px;
     width:100%;
     align-items:center;
     justify-content:space-around;
@@ -194,11 +195,13 @@ export default {
           border-radius:50%;
           font-size:18px;
           color:#fff;
+          margin: 9px;
         }
       }
     }
   }
   .collapse{
+    box-shadow: 1px 1px 5px 1px #ddd;
     margin-top:10px;
     width:100%;
     display:flex;

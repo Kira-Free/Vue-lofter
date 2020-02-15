@@ -34,15 +34,13 @@ export default {
     }
   },
   mounted () {
-    this.newSave({ index: 1, code: 0 })
+    this.newSave({ index: 1 })
   },
   methods: {
     ...mapActions(['newSave']),
     onRefresh () {
       console.log(this.newslist.length)
-      let array = { index: this.newslist.length, code: 1 }
-      // console.log(array)
-      this.newSave(array) // 1为刷新
+      this.newSave({ index: 1 })
       this.$nextTick(() => {
         setTimeout(() => {
           this.isLoading = false

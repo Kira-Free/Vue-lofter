@@ -1,7 +1,7 @@
 import ajax from './ajax'
 
 // 请求首页数据
-export const getNewsList = (index, code) => ajax(`/axios/news`, { index, code })
+export const getNewsList = (index) => ajax(`/axios/news`, { index })
 // 密码登录
 export const pwdLogin = (phone, pass, captcha) => ajax(`/axios/user`, { phone, pass, captcha }, 'POST')
 // 验证码对比 发送密码

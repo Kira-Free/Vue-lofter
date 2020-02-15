@@ -1,19 +1,12 @@
 
 export default {
-  news_list (state, { newslist, code }) {
-    // console.log(newslist)
+  news_list (state, { newslist }) {
+    console.log(newslist)
     if (newslist) {
-      if (typeof code === 'number') {
-        if (code === 1) {
-          state.news = [newslist]
-        } if (code === 2) {
-          state.news.push(newslist)
-        } else {
-          state.news = [newslist]
-        }
-      } else {
-        state.news = [newslist]
-      }
+      state.news.push(newslist)
+      console.log(state.news)
+    } else {
+      console.log('error')
     }
   },
   add_user (state, { user }) {
