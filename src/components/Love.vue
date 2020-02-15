@@ -107,9 +107,12 @@ export default {
       // 浏览器高度
       if (scrollTop + windowHeight === scrollHeight) {
         console.log(this.$store.state.news.length)
+        console.log(1111)
         await setTimeout(() => { this.newSave({ index: this.$store.state.news.length + 1 }) }, 1000)
-        window.removeEventListener('scroll', this.handleScroll)
       }
+    //   setTimeout(() => {
+    //     window.removeEventListener('scroll', this.handleScroll)
+    //   }, 2000)
     }
   },
   components: {

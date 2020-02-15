@@ -1,10 +1,13 @@
 
 export default {
-  news_list (state, { newslist }) {
-    console.log(newslist)
+  news_list (state, { newslist, code }) {
     if (newslist) {
-      state.news.push(newslist)
-      console.log(state.news)
+      if (code === 1) {
+        state.news = [newslist]
+      } else {
+        state.news.push(newslist)
+        // console.log(state.news)
+      }
     } else {
       console.log('error')
     }
