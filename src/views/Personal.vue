@@ -29,7 +29,7 @@
           <div v-for="(item,index) in arrname" :key="index" class="like">
             <div class="like_1">
               <div class="like_2">
-                <van-icon class="icon" :name="arrnumber[index]" />
+                <van-icon class="icon" :class="'icon'+index" :name="arrnumber[index]" />
                 <div>{{item}}</div>
               </div>
             </div>
@@ -172,11 +172,20 @@ export default {
         // background-color:red;
         .icon{
           padding:8px;
-          background: linear-gradient(to bottom,  #e61a13 0%,#740d5a 100%);
+          background: linear-gradient(to bottom right,  #f00410 0%,#cf7932 80%,#f7f3f6 100%);
           border-radius:50%;
           font-size:18px;
           color:#fff;
           margin: 9px;
+        }
+        .icon1{
+          background: linear-gradient(to bottom right,  #62f004 0%,#a5ec89 80%,#f7f3f6 100%);
+        }
+        .icon2{
+          background: linear-gradient(to bottom right,  #0486f0 0%,#71b9e9 80%,#f7f3f6 100%);
+        }
+        .icon3{
+          background: linear-gradient(to bottom right,  #f00410 0%,#cf329b 80%,#f7f3f6 100%);
         }
         // .icon:nth-of-type(1){
           // background-color:blue;
