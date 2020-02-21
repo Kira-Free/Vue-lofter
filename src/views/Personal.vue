@@ -20,58 +20,35 @@
           </div>
         </div>
         <div class="hobby">
-          <div class="focus">
-            <div class="num">4</div>
-            <div class="name">关注</div>
-          </div>
-          <div class="fans">
-            <div class="num">0</div>
-            <div class="name">粉丝</div>
-          </div>
-          <div class="recommended">
-            <div class="num">7</div>
-            <div class="name">推荐</div>
+          <div v-for="(item,key,index) in obj" :key="index" class="focus">
+            <div class="num">{{item.number}}</div>
+            <div class="name">{{item.name}}</div>
           </div>
         </div>
         <div class="iconList">
-          <div class="like">
+          <div v-for="(item,index) in arrname" :key="index" class="like">
             <div class="like_1">
               <div class="like_2">
-                <van-icon class="icon" name="like-o" />
-                <div>收到的喜欢</div>
-              </div>
-            </div>
-          </div>
-          <div class="like">
-            <div class="like_1">
-              <div class="like_2">
-                <van-icon class="icon" name="chat-o" />
-                <div>评论</div>
-              </div>
-            </div>
-          </div>
-          <div class="like">
-            <div class="like_1">
-              <div class="like_2">
-                <van-icon class="icon" name="friends-o" />
-                <div>聊天</div>
-              </div>
-            </div>
-          </div>
-          <div class="like">
-            <div class="like_1">
-              <div class="like_2">
-                <van-icon class="icon" name="volume-o" />
-                <div>通知</div>
+                <van-icon class="icon" :name="arrnumber[index]" />
+                <div>{{item}}</div>
               </div>
             </div>
           </div>
         </div>
-        <van-collapse class="collapse" v-model="activeName" accordion>
-          <van-collapse-item title="我的收藏" name="1">内容</van-collapse-item>
-          <van-collapse-item title="达人认证" name="2">内容</van-collapse-item>
-          <van-collapse-item title="设置" name="3"><van-button @click.prevent="logOut" square type="danger">退出登录</van-button></van-collapse-item>
-        </van-collapse>
+        <div class="collapse">
+          <van-collapse class="cplist" v-model="activeNameo" accordion>
+            <van-collapse-item title="我的收藏" name="1">内容</van-collapse-item>
+            <van-collapse-item title="达人认证" name="2">内容</van-collapse-item>
+            <!-- <van-collapse-item title="设置" name="3"><van-button @click.prevent="logOut" square type="danger">退出登录</van-button></van-collapse-item> -->
+          </van-collapse>
+        </div>
+        <div class="collapse">
+          <van-collapse class="cplist" v-model="activeNamet" accordion>
+            <van-collapse-item title="打赏记录" name="1">内容</van-collapse-item>
+            <van-collapse-item title="个人应用" name="2">内容</van-collapse-item>
+            <van-collapse-item title="设置" name="3"><van-button @click.prevent="logOut" square type="danger">退出登录</van-button></van-collapse-item>
+          </van-collapse>
+        </div>
       </div>
       <LoR v-else></LoR>
     </div>
@@ -91,7 +68,15 @@ Vue.use(Lazyload, {
 export default {
   data () {
     return {
-      activeName: '1'
+      activeNameo: '1',
+      activeNamet: 'o',
+      obj: [
+        { name: '关注', number: 3 },
+        { name: '粉丝', number: 6 },
+        { name: '推荐', number: 2 }
+      ],
+      arrname: ['收到的喜欢', '评论', '聊天', '通知'],
+      arrnumber: ['like-o', 'chat-o', 'friends-o', 'volume-o']
     }
   },
   components: {
@@ -120,6 +105,7 @@ export default {
 </script>
 <style lang="scss">
 .personal{
+  overflow-x: hidden;
   display:flex;
   height:100%;
   // justify-content:center;
@@ -168,21 +154,16 @@ export default {
     .focus{
       flex:1;
     }
-    .fans{
-      flex:1;
-    }
-    .recommended{
-      flex:1;
-    }
   }
   .iconList{
-    box-shadow: 1px 1px 5px 1px #ddd;
+    box-shadow: 1px 1px 15px 1px #ddd;
     padding:8px;
     margin:2%;
     width:92%;
     display:flex;
     justify-content:center;
     align-items:center;
+    border-radius: 5px;
     .like{
       font-size:10px;
       flex:1;
@@ -191,21 +172,29 @@ export default {
         // background-color:red;
         .icon{
           padding:8px;
-          background-color:red;
+          background: linear-gradient(to bottom,  #e61a13 0%,#740d5a 100%);
           border-radius:50%;
           font-size:18px;
           color:#fff;
           margin: 9px;
         }
+        // .icon:nth-of-type(1){
+          // background-color:blue;
+        // }
       }
     }
   }
   .collapse{
-    box-shadow: 1px 1px 5px 1px #ddd;
+    box-shadow: 1px 1px 15px 1px #ddd;
+    border-radius: 5px;
+    padding:8px;
+    margin:2%;
     margin-top:10px;
-    width:100%;
-    display:flex;
-    flex-direction:column;
+    .cplist{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+    }
   }
 }
 </style>
